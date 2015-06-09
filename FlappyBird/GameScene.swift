@@ -9,7 +9,7 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate{
-    let verticalPipeGap = 150.0
+    let verticalPipeGap = 200.0 // 150.0
     
     var bird:SKSpriteNode!
     var skyColor:SKColor!
@@ -203,14 +203,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         moving.speed = 1
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
         if moving.speed > 0  {
             for touch: AnyObject in touches {
                 let location = touch.locationInNode(self)
                 
                 bird.physicsBody?.velocity = CGVectorMake(0, 0)
-                bird.physicsBody?.applyImpulse(CGVectorMake(0, 30))
+                bird.physicsBody?.applyImpulse(CGVectorMake(0, 20)) //30
                 
             }
         }else if canRestart {
